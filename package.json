@@ -1,0 +1,27 @@
+{
+  "name": "doska",
+  "version": "2.0.0",
+  "description": "Doska — drawing application with rooms",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stepan-Samutichev/Doska.git"
+  },
+  "author": "Stepan Samutichev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Stepan-Samutichev/Doska/issues"
+  },
+  "homepage": "https://github.com/Stepan-Samutichev/Doska#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "socket.io": "^4.4.0",
+    "uuid": "^8.3.2"
+  }
+}

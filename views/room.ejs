@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="jquery-3.6.0.min.js" defer></script>
+    <script src="fabric.min.js" defer></script>
+    <script src="main.js" defer></script>
+    <script src="story.js" defer></script>
+    <script src="socket.js" defer></script>
+    <script src="pan.js" defer></script>
+    <script src="hammer.min.js" defer></script>
+    <script src="touch.js" defer></script>
+    <script src="export.js" defer></script>
+    <script>
+        const ROOM_ID = "<%= roomId %>"
+    </script>
+    <!-- <script>
+        const username = window.prompt("Hello! Type your name:");
+        socket.emit('new user', username);
+    </script> -->
+    <title>Doska</title>
+    <link rel="icon" href="assets/favicon.svg">
+</head>
+<body>
+    <div class="container">
+
+        <div class="topPanel">
+            <!-- <button type="button" class="link" onclick="copyLink()"></button> -->
+            <button type="button" class="download" onclick="downloadImage()"></button>
+        </div>        
+
+        <div id="canvasWrapper">
+            <canvas id="c" style="position: relative; top: 0; bottom: 0; left: 0; right: 0; z-index: 2;"></canvas>
+        </div>
+
+        <div class="dockPanel">
+            <div class="main-tools">
+                <div class="tools">
+                    <button type="button" class="undo" onclick="undo(), sendCommand('undo')"></button>
+                </div>
+                <div class="tools center">
+                    <button type="button" class="select" id="select" onclick="changeAction(this)"></button>
+                    <button type="button" class="pen" id="brush" onclick="changeAction(this)"></button>
+                    <button type="button" class="eraser" id="erase" onclick="changeAction(this)"></button>
+                    <button type="button" class="clear" onclick="clearCanvas(), sendCommand('clear')"></button>
+                </div>
+                <!-- <div class="tools canvasControlls">
+                    <input name="file" type="file" id="uploader" accept="image/png, image/gif, image/jpeg"/>
+                    <label for="uploader" class="uploader-button"></label>
+                </div> -->
+                <div class="tools">
+                    <button class="colors"></button>
+                    <button class="sizes"></button>
+                    <button class="patterns"></button>
+                </div>
+            </div>
+            <div class="tools brushSizes settings">
+                <button class="small" onclick="setBrush({width: 3})"></button>
+                <button class="middle active" onclick="setBrush({width: 5})"></button>
+                <button class="big" onclick="setBrush({width: 10})"></button>
+            </div>
+            <div class="tools brushColors settings">
+                <button class="color black active" data-value="#000000"></button>
+                <button class="color red" data-value="#D01919"></button>
+                <button class="color yellow" data-value="#EAAE00"></button>
+                <button class="color green" data-value="#16AB39"></button>
+                <button class="color blue" data-value="#1678C2"></button>
+                <input type="color" class="button color-input">
+            </div>
+            <div class="tools canvasPatterns settings">
+                <button class="none active" onclick="setPattern('none'), sendCommand('none')"></button>
+                <button class="sq" onclick="setPattern('sq'), sendCommand('sq')"></button>
+                <button class="line" onclick="setPattern('line'), sendCommand('line')"></button>
+                <button class="dot" onclick="setPattern('dot'), sendCommand('dot')"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
